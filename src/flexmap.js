@@ -7,7 +7,7 @@ let easybutton = require('leaflet-easybutton');
 let zoomBox = require('leaflet-zoombox');
 const street = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
 const imagery = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
-export  default  class flex{
+class flex{
     //constructor that takes in the map id the id of the map to use the id most be a dom reference of an object;
     //attribution  not cumplolsory put in the attribution of your map
     //if your map does not exist set create map in options to true 
@@ -56,11 +56,12 @@ export  default  class flex{
                                                });
                                        }
         //configureMap  to create or configure your instance of map
-    configureMap = ()=>{
+    configureMap(){
     let view;
      if (! this.createmap && !this.mapInstance ){
           let mapid = this.mapid;  
           if (!mapid) {
+              throw new Error('Must provide a map ID as a valid DOM  id reference string')
               console.log('Error you need to pass in a valid DOM reference id as string..')
               return null
           }else{
@@ -85,8 +86,9 @@ export  default  class flex{
      title: "Draw rectangle to zoom"
           });
     this.map.addControl(control);	
+    }
 //function to switch base map of the class..
-switchBaseMap = ()=>{	
+switchBaseMap() {	
 this.map.removeLayer(this.frontlayer);
   switch(frontLayer){
 case 'street':
@@ -104,8 +106,8 @@ case 'street':
 	this.map.addLayer(this.frontLayer);	
   }//switchbase  
  
-}
-route = (options) =>{
+
+route (options){
 return  new Promise ( (resolve,reject)=>{
  correct = false;
   typeof(options) == 'object' && options.fromLat && options.toLat && optionns.fromLng && options.toLng ?  correct = true : correct = false; 
@@ -143,14 +145,14 @@ return  new Promise ( (resolve,reject)=>{
   resolve({message, distance, time}) ;
 });
 }
-removeroutes = ()=>{
+clearroutes (){
 try {this.map.removeControl(this.routes); this.routes = null; }
     catch(err){ }	
 };
-resetroutes = (newroutes)=>{
+resetroutes (newroutes){
 	this.setWaypoints(newroutes);	
 };
-removeroutes = ()=>{  
+removeroutes(){  
  try{	
  this.routes.spliceWaypoints(0, 2);
 this.routes = null;

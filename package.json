@@ -4,12 +4,11 @@
   "description": "A maping utility library based on leaflet, it performs common basic mapping functionality with one call",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./node_modules/mocha/bin/mocha",
     "build": "browserify ./src/index.js > ./src/flexmap.js",
     "postbuild": "uglifyjs ./src/flexmap.js -cm -o flexmap.min.js",
     "preversion": "npm test && npm run build",
-    "start": "budo ./src/index.js:./src/flexmap.js --live"  
-
+    "start": "budo ./src/index.js:./src/flexmap.js --live"
   },
   "repository": {
     "type": "git",
@@ -33,8 +32,6 @@
     "Tosin",
     "Felixson"
   ],
-  
-
   "author": "Felixson Yusuf Tosin",
   "license": "ISC",
   "bugs": {
@@ -43,6 +40,7 @@
   "homepage": "https://github.com/felixsonyusuftosin/flexmap#readme",
   "devDependencies": {
     "chai": "^4.1.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.5.0"
   },
   "dependencies": {
