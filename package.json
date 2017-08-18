@@ -1,0 +1,59 @@
+{
+  "name": "flexmap",
+  "version": "1.0.0",
+  "description": "A maping utility library based on leaflet, it performs common basic mapping functionality with one call",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify ./src/index.js > ./src/flexmap.js",
+    "postbuild": "uglifyjs ./src/flexmap.js -cm -o flexmap.min.js",
+    "preversion": "npm test && npm run build",
+    "start": "budo ./src/index.js:./src/flexmap.js --live"  
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixsonyusuftosin/flexmap.git"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "leaflet": "global:L"
+  },
+  "keywords": [
+    "flexmap",
+    "Leaflet",
+    "Mapping",
+    "GIS",
+    "Felixson",
+    "Yusuf",
+    "Tosin",
+    "Felixson"
+  ],
+  
+
+  "author": "Felixson Yusuf Tosin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixsonyusuftosin/flexmap/issues"
+  },
+  "homepage": "https://github.com/felixsonyusuftosin/flexmap#readme",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "browserify": "^14.4.0",
+    "declare": "0.0.3",
+    "leaflet": "^1.2.0",
+    "leaflet-bing-layer": "^3.2.0",
+    "leaflet-easybutton": "^2.2.0",
+    "leaflet-pulse-icon": "^0.1.0",
+    "leaflet-routing-machine": "^3.2.5",
+    "leaflet-zoombox": "^0.3.5"
+  }
+}
