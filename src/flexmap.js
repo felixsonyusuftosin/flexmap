@@ -7,7 +7,7 @@ let easybutton = require('leaflet-easybutton');
 let zoomBox = require('leaflet-zoombox');
 const street = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
 const imagery = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
-class flex{
+export default class flex{
     //constructor that takes in the map id the id of the map to use the id most be a dom reference of an object;
     //attribution  not cumplolsory put in the attribution of your map
     //if your map does not exist set create map in options to true 
